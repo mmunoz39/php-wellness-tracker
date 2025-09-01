@@ -25,6 +25,20 @@ switch ($path) {
         echo $ctrl->dashboard();
         break;
 
+	case '/measurements/new':            // NEW: show form
+        echo $ctrl->newMeasurement();
+        break;
+
+    case '/measurements':                // NEW: handle POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo $ctrl->createMeasurement();
+            break;
+        }
+        http_response_code(405);
+        header('Allow: POST');
+        echo 'Method Not Allowed';
+        break;
+
     default:
         http_response_code(404);
         header('Content-Type: text/plain; charset=utf-8');

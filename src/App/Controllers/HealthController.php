@@ -32,4 +32,63 @@ final class HealthController
     {
         return $this->view->render('dashboard.twig');
     }
+	
+	// GET /measurements/new
+    public function newMeasurement(): string
+    {
+        return $this->view->render('add_measurement.twig');
+    }
+
+    // POST /measurements
+    public function createMeasurement(): string
+    {
+        // Minimal validation (no auth for demo)
+        $type = $_POST['type'] ?? '';
+        $value = $_POST['value'] ?? '';
+        $date = $_POST['measuredAt'] ?? '';
+
+        if ($type === '' || $value === '' || $date === '') {
+            http_response_code(400);
+            return $this->view->render('add_measurement.twig', [
+                'error' => 'All fields are required.'
+            ]);
+        }
+
+        if (!preg_match('/^(weight|steps|sleep_hours)$/', $type)) {
+            http_response_code(400);
+            return $this->view->render('add_measurement.twig', [
+                'error' => 'Invalid type.'
+            ]);
+        }
+
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+            http_response_code(400);
+            return $this->view->render('add_measurement.twig', [
+                'error' => 'Invalid date format (YYYY-MM-DD).'
+            ]);
+        }
+
+        $val = (float)$value;
+        if (!is_finite($val)) {
+            http_response_code(400);
+            return $this->view->render('add_measurement.twig', [
+                'error' => 'Invalid numeric value.'
+            ]);
+        }
+
+        // Save
+        $repo = new \App\Repositories\MeasurementRepository($this->db);
+        $repo->create(new \App\Models\Measurement(
+            id: null,
+            userId: 1,
+            type: $type,
+            value: $val,
+            measuredAt: $date
+        ));
+
+        // Simple success message (could redirect)
+        return $this->view->render('add_measurement.twig', [
+            'success' => 'Measurement saved successfully!'
+        ]);
+    }
 }
