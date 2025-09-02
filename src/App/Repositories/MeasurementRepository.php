@@ -30,4 +30,19 @@ final class MeasurementRepository
             measuredAt: (string)$r['measured_at'],
         ), $rows);
     }
+	
+	    public function create(Measurement $m): int
+    {
+        $sql = "INSERT INTO measurements (user_id, type, value, measured_at)
+                VALUES (:user_id, :type, :value, :measured_at)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            'user_id'    => $m->userId,
+            'type'       => $m->type,
+            'value'      => $m->value,
+            'measured_at'=> $m->measuredAt,
+        ]);
+        return (int)$this->db->lastInsertId();
+    }
+
 }

@@ -1,0 +1,22 @@
+{
+  "name": "mmunoz39/php-wellness-tracker",
+  "type": "project",
+  "require": {
+    "twig/twig": "^3.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/App/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5",
+    "phpstan/phpstan": "^1.11",
+    "squizlabs/php_codesniffer": "^3.9"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "lint": "phpcs -q",
+    "stan": "phpstan analyse src --level=max"
+  }
+}
