@@ -68,10 +68,5 @@ php-wellness-tracker/
 
 ---
 
-## 📸 Screenshots (optional)
-*(Add screenshots of the app UI or PHPUnit results if available.)*
-
----
-
 ## 📜 License
 This project is provided for educational and demonstration purposes.
