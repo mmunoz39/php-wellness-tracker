@@ -5,7 +5,7 @@ The app provides endpoints and views to **record and visualize health metrics** 
 
 ---
 
-## 🚀 Features
+## Features
 - **REST-style endpoints** to add and retrieve health measurements.
 - **Views** built with Twig to display metrics and simple charts (Chart.js).
 - **Database migrations** in `/migrations` to initialize schema.
@@ -14,7 +14,7 @@ The app provides endpoints and views to **record and visualize health metrics** 
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 - **Backend:** PHP 8.2, PDO (MySQL)
 - **Frontend:** Twig templates, Chart.js
 - **Database:** MySQL 8
@@ -23,7 +23,7 @@ The app provides endpoints and views to **record and visualize health metrics** 
 
 ---
 
-## ⚙️ Setup
+## Setup
 1. Clone the repository:
    ```bash
    git clone https://github.com/mmunoz39/php-wellness-tracker.git
@@ -41,11 +41,11 @@ The app provides endpoints and views to **record and visualize health metrics** 
    ```
 
 4. Open the app in your browser:  
-   👉 [http://localhost:8080](http://localhost:8080)
+ [http://localhost:8080](http://localhost:8080)
 
 ---
 
-## 🧪 Tests
+## Tests
 Run PHPUnit inside the container:
 ```bash
 docker compose exec app php vendor/bin/phpunit
@@ -53,7 +53,7 @@ docker compose exec app php vendor/bin/phpunit
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 ```
 php-wellness-tracker/
 │
@@ -68,5 +68,5 @@ php-wellness-tracker/
 
 ---
 
-## 📜 License
+## License
 This project is provided for educational and demonstration purposes.
