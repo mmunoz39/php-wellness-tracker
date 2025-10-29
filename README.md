@@ -71,3 +71,7 @@ php-wellness-tracker/
 ## License
 This project is provided for educational and demonstration purposes.
 Feel free to fork, clone or contribute!
+
+## Author
+**Marcelo Munoz**  
+Data & Software Developer | Saskatoon, SK, Canada
